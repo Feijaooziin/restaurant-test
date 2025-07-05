@@ -1,12 +1,18 @@
+import { Prisma } from "@prisma/client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface ProductMesaProps {
-  name: string;
-  price: string;
+// interface ProductMesaProps {
+//   name: string;
+//   price: string;
+// }
+
+interface RestaurantCategoriesProps {
+  category: Prisma.CategoriaGetPayload<{}>;
 }
 
-const ProductMesa = ({ name, price }: ProductMesaProps) => {
+const ProductMesa = ({ name, price }: RestaurantCategoriesProps) => {
   return (
     <div>
       <Card className="shadow-lg">

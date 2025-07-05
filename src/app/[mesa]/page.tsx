@@ -12,9 +12,20 @@ interface TelaMesaProps {
   params: Promise<{ mesa: string }>;
 }
 
+interface RestaurantCategoriesProps {
+  restaurant: Prisma.RestaurantGetPayload<{
+    include: {
+      menuCategories: {
+        include: { products: true };
+      };
+    };
+  }>;
+}
+
 const TelaMesa = async ({ params }: TelaMesaProps) => {
   const { mesa } = await params;
   const mesaInfo = await db.mesa.findUnique({ where: { slug: mesa } });
+  const categories = await db.categoria.find;
 
   if (!mesaInfo) {
     return notFound();
