@@ -6,10 +6,75 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+  role     Role
+}
+
+model Mesa {
+  id      Int      @id @default(autoincrement())
+  slug    String   @unique
+  numero  Int
+  ocupada Boolean  @default(false)
+  pedidos Pedido[]
+}
+
+model Categoria {
+  id       Int       @id @default(autoincrement())
+  nome     String
+  produtos Produto[]
+}
+
+model Produto {
+  id          Int          @id @default(autoincrement())
+  nome        String
+  descricao   String
+  preco       Float
+  imagem_url  String
+  categoria   Categoria    @relation(fields: [categoriaId], references: [id])
+  categoriaId Int
+  itens       ItemPedido[]
+}
+
+model Pedido {
+  id            Int          @id @default(autoincrement())
+  mesa          Mesa         @relation(fields: [mesaId], references: [id])
+  mesaId        Int
+  status        PedidoStatus
+  criado_em     DateTime     @default(now())
+  atualizado_em DateTime     @updatedAt
+  itens         ItemPedido[]
+}
+
+model ItemPedido {
+  id          Int     @id @default(autoincrement())
+  pedido      Pedido  @relation(fields: [pedidoId], references: [id])
+  pedidoId    Int
+  produto     Produto @relation(fields: [produtoId], references: [id])
+  produtoId   Int
+  quantidade  Int
+  observacoes String?
+}
+
+enum PedidoStatus {
+  ABERTO
+  EM_PREPARO
+  PRONTO
+  FINALIZADO
+}
+
+enum Role {
+  ADMIN
+  GARCOM
+  COZINHA
 }

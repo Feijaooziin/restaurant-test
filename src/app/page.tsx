@@ -14,9 +14,7 @@ const HomePage = () => {
       <div className="flex flex-col gap-5 rounded-xl border border-blue-500 p-2">
         <h1 className="text-2xl">Nome:</h1>
         <Input placeholder="Digite seu Nome..." />
-        <Button className="w-fit" variant="default">
-          Enviar
-        </Button>
+        <Button className="w-fit">Enviar</Button>
       </div>
     </div>
   );
