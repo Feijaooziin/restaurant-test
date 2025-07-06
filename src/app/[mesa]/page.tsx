@@ -1,10 +1,7 @@
-// import { notFound } from "next/navigation";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-// import { db } from "@/lib/prisma";
 import HeaderMesa from "./_components/header";
 import ProductMesa from "./_components/product";
 
@@ -14,11 +11,6 @@ interface TelaMesaProps {
 
 const TelaMesa = async ({ params }: TelaMesaProps) => {
   const { mesa } = await params;
-  // const mesaInfo = await db.mesa.findUnique({ where: { slug: mesa } });
-
-  // if (!mesaInfo) {
-  //   return notFound();
-  // }
 
   return (
     <div className="flex h-full flex-col">

@@ -1,15 +1,11 @@
-import HeaderMesa from "./_components/header";
+import Header from "./_components/header";
 import MesaCard from "./_components/mesaCard";
 
 const TelaMesa = async () => {
   return (
     <div className="flex h-full flex-col gap-8">
       {/* Header */}
-      <HeaderMesa
-        logo="logo.png"
-        logoName="Feijão Brguer"
-        name="mapa de mesas"
-      />
+      <Header logo="logo.png" logoName="Feijão Brguer" name="mapa de mesas" />
 
       {/* Main */}
       <div className="mb-3 flex flex-col gap-5 px-3">

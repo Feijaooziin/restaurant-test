@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface HeaderMesaProps {
@@ -6,7 +8,7 @@ interface HeaderMesaProps {
   name: string;
 }
 
-const HeaderMesa = ({ logo, logoName, name }: HeaderMesaProps) => {
+const Header = ({ logo, logoName, name }: HeaderMesaProps) => {
   return (
     <div className="flex items-center justify-between border-b border-gray-400 p-3">
       {/* Logo */}
@@ -21,10 +23,12 @@ const HeaderMesa = ({ logo, logoName, name }: HeaderMesaProps) => {
       {/* Menu */}
       <div className="flex items-center gap-1">
         <h1 className="text-lg font-semibold capitalize">{name} |</h1>
-        <a className="capitalize text-gray-500">Sair</a>
+        <Link className="capitalize text-gray-500" href={"./"}>
+          Sair
+        </Link>
       </div>
     </div>
   );
 };
 
-export default HeaderMesa;
+export default Header;

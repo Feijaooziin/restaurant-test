@@ -9,11 +9,11 @@ interface ButtonRotaProps {
 
 const ButtonRota = ({ text, rota }: ButtonRotaProps) => {
   return (
-    <Button className="flex h-full items-center rounded-xl p-2 text-xl">
-      <Link href={`./${rota}`} className="flex items-center gap-6 capitalize">
+    <Link href={`./${rota}`} className="flex items-center gap-6 capitalize">
+      <Button className="flex h-full w-full items-center rounded-xl p-2 text-xl">
         {text}
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 };
 
